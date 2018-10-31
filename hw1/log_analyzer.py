@@ -385,10 +385,10 @@ def main(*, default_config, debug=True):
         calculated_stats = calculate_stats(stats, report_size)
 
         report_filename = get_report_filename(report_dir, log_file.date.strftime("%Y.%m.%d"))
-        with open(get_report_template_filename(), 'r') as template_fp:
+        with open(get_report_template_filename(), 'r', encoding='utf8') as template_fp:
             template = Template(template_fp.read())
 
-            with open(report_filename, 'w') as report_fp:
+            with open(report_filename, 'w', encoding='utf8') as report_fp:
                 report_fp.write(template.safe_substitute(table_json=dumps(calculated_stats)))
 
     except Exception as e:
